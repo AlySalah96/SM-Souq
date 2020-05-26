@@ -1,0 +1,28 @@
+<a class="btn btn-info mt-5 ml-2 mb-2" routerLink="/NewProduct">New Product</a>
+
+<table class="table bordered">
+        <thead class="bg-primary ">
+                
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Image</th>
+                 
+                  <th> Update</th>
+                  <th> Delete</th>
+                 
+        </thead>
+        <tr *ngFor="let prod of productsList ;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{prod.Name}}</td>
+        <td>{{prod.Quantity}}</td> 
+        <td>{{prod.Price|currency}}</td>    
+        <td><img style="width:50px;height:50px;" class="rounded-circle" [src]="prod.Image"/></td>
+       
+        <td> <a routerLink="/UpdateProduct/{{prod.Id}}" class="btn btn-info" >Update</a></td>
+        <td> <a  (click)="DeleteProduct(prod.Id)" class="btn btn-danger" >Delete</a></td>
+
+
+        </tr>
+ </table>

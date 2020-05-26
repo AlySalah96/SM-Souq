@@ -1,0 +1,63 @@
+
+
+<form #myfrm="ngForm" (ngSubmit)="addProduct()" id="myForm">
+
+        <div class="form-group">
+                <label for="">Product Name</label>
+                <input #productName="ngModel" type="text" [(ngModel)]="Product.Name" 
+                [class.is-valid]="productName.valid" [class.is-invalid]="productName.invalid && productName.touched" 
+                class="form-control" name="productName" required minlength="5" >
+
+                <div [hidden]="productName.valid || productName.untouched"
+                  class="alert alert-danger">
+                    Plz enter Product Name 
+                 </div>
+        </div>
+
+        <div class="form-group">
+                <label for="">Product Description</label>
+                <input #productDescription="ngModel" type="text" [(ngModel)]="Product.Description" 
+                [class.is-valid]="productDescription.valid" [class.is-invalid]="productDescription.invalid && productDescription.touched" 
+                class="form-control" name="productDescription" required minlength="10" >
+
+                <div [hidden]="productDescription.valid || productDescription.untouched"
+                  class="alert alert-danger">
+                    Plz enter Product Description 
+                 </div>
+        </div>
+
+        <div class="form-group">
+                <label for="">Product Price</label>
+                <input #productPrice="ngModel" type="text" [(ngModel)]="Product.Price" 
+                [class.is-valid]="productPrice.valid" [class.is-invalid]="productPrice.invalid && productPrice.touched" 
+                class="form-control" name="productPrice" required minlength="3"  >
+
+                <div [hidden]="productPrice.valid || productPrice.untouched"
+                  class="alert alert-danger">
+                    Plz enter Product Price 
+                 </div>
+        </div>
+
+        <div class="form-group">
+                <label for="">Product Quantity</label>
+                <input #productQuantity="ngModel" type="text" [(ngModel)]="Product.Quantity" 
+                [class.is-valid]="productQuantity.valid" [class.is-invalid]="productQuantity.invalid && productQuantity.touched" 
+                class="form-control" name="productQuantity" required minlength="4"  >
+
+                <div [hidden]="productQuantity.valid || productQuantity.untouched"
+                  class="alert alert-danger">
+                    Plz enter Product Quantity 
+                 </div>
+        </div>
+
+
+        <div class="form-group">
+                <label for="">Product Image</label>
+                <input type="file" (change)="readURL($event);">
+                
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="myfrm.invalid">Submit</button>
+
+
+</form>
+
