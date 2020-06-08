@@ -1,0 +1,63 @@
+
+
+<form #myfrm="ngForm" (ngSubmit)="signUp()" id="myForm">
+        <h2> Sign Up</h2>
+
+    <div class="form-group">
+        <label for=""> User Name</label>
+        <input #Name="ngModel" type="text" [(ngModel)]="User.Name" [class.is-valid]="Name.valid" [class.is-invalid]="Name.invalid && Name.touched"
+            class="form-control" name="Name" required minlength="5">
+
+        <div  *ngIf="Name.errors?.required && Name.touched" class="alert alert-danger">
+            Plz enter User Name
+        </div>
+        <div class="alert alert-danger" *ngIf="Name.errors?.minlength && Name.touched"> user name should be at least 5 characters </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for=""> password</label>
+        <input #password="ngModel" type="password" [(ngModel)]="User.password" [class.is-valid]="password.valid" [class.is-invalid]="password.invalid && password.touched"
+            class="form-control" name="password" required>
+
+
+        <div *ngIf="password.errors?.required  && password.touched" class="alert alert-danger">
+            Plz enter User password
+        </div>
+       
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <label for=""> confirm password</label>
+        <input #confirmpassword="ngModel" type="password" [(ngModel)]="User.confirmpassword" [class.is-valid]="confirmpassword.valid" [class.is-invalid]="password.invalid && password.touched"
+            class="form-control" name="confirmpassword" required>
+
+        <div *ngIf="confirmpassword.errors?.required  && confirmpassword.touched" class="alert alert-danger">
+            Plz confirm User password
+        </div>
+        <div class="alert alert-danger"  *ngIf="confirmpassword.value !=password.value && confirmpassword.touched" >password not equals comfirm password</div>
+  
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="myfrm.invalid">Register</button>
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<!-- //////////////////////////////////////////////////////////////////////////// -->

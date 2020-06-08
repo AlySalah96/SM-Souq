@@ -1,28 +1,143 @@
-<a class="btn btn-info mt-5 ml-2 mb-2" routerLink="/NewProduct">New Product</a>
+<a class="btn btn-info mt-5 mr-2 mb-2" routerLink="/NewProduct">New Product</a>
 
-<table class="table bordered">
-        <thead class="bg-primary ">
+<div style="clear:both">
+        </div>
+        
+<div class="col-md-3" *ngFor="let prod of productsList ;let i=index" style="float:left" ><mat-card>
+        <div class="card mb-4 text-white bg-dark">
+                <img style="width:310px;height:250px;" [src]="prod.Image" />
+                <div class="card-body" style="height:270px">
+                        <h5 class="card-title">{{prod.Name}}</h5>
+                        <p class="card-text"> {{prod.Description}} Some quick example text to build on the card title and make up the bulk of the
+                                card's content.</p>
+                        <p class="card-text">{{prod.Quantity}} item(s)</p>
+                        <p class="card-text"> Price :{{prod.Price|currency}}</p>
+                        <a routerLink="/UpdateProduct/{{prod.Id}}" class="btn btn-info">
+                                <i class="fas fa-edit"></i> Update</a>
+                                <a class="btn btn-danger " style="margin-left:15px" data-toggle="modal" data-target="#myModal">
+                                        <i class="fas fa-trash-alt" ></i> Remove</a>
                 
-                  <th>No.</th>
-                  <th>Name</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Image</th>
-                 
-                  <th> Update</th>
-                  <th> Delete</th>
-                 
+                                        <div class="modal fade text-muted" id="myModal" role="dialog">
+                                                <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                                <div class="modal-header">
+                
+                                                                        <h4 class="modal-title"> Confirm Deletetion ! </h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                        <p> Are you sure yoy want to this delete product</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                
+                                                                        <button type="button" (click)="DeleteProduct(prod.Id)" class="btn btn-default" data-dismiss="modal">Delete</button>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                
+                
+                       
+                </div>
+        </div>
+</mat-card></div>
+
+<div style="clear:both">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<table class="table bordered " #tbl>
+        <thead class="bg-primary ">
+
+                <th>No.</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Image</th>
+
+                <th> Update</th>
+                <th> Delete</th>
+
         </thead>
         <tr *ngFor="let prod of productsList ;let i=index">
-        <td>{{i+1}}</td>
-        <td>{{prod.Name}}</td>
-        <td>{{prod.Quantity}}</td> 
-        <td>{{prod.Price|currency}}</td>    
-        <td><img style="width:50px;height:50px;" class="rounded-circle" [src]="prod.Image"/></td>
-       
-        <td> <a routerLink="/UpdateProduct/{{prod.Id}}" class="btn btn-info" >Update</a></td>
-        <td> <a  (click)="DeleteProduct(prod.Id)" class="btn btn-danger" >Delete</a></td>
+                <td>{{i+1}}</td>
+                <td>{{prod.Name}}</td>
+                <td>{{prod.Quantity}}</td>
+                <td>{{prod.Price|currency}}</td>
+                <td>
+                        <img style="width:50px;height:50px;" class="rounded-circle" [src]="prod.Image" />
+                </td>
+
+                <td>
+                        <a routerLink="/UpdateProduct/{{prod.Id}}" class="btn btn-info">
+                                <i class="fas fa-edit"></i> Update</a>
+                </td>
+                <td>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                <i class="fas fa-trash-alt"></i> Delete</a>
+
+                        <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                        <h4 class="modal-title"> Confirm Deletetion ! </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                        <p> Are you sure yoy want to this delete product</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                                        <button type="button" (click)="DeleteProduct(prod.Id)" class="btn btn-default" data-dismiss="modal">Delete</button>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+
+
+                </td>
 
 
         </tr>
- </table>
+
+
+
+
+
+
+
+</table> -->

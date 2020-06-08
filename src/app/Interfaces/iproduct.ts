@@ -5,5 +5,6 @@ export interface Iproduct {
     Image : string,
     Price: number,
     Quantity: number,
+    CatId:number
    
 }

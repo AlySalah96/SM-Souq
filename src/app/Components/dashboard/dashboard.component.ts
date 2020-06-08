@@ -12,22 +12,29 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   constructor(private _ProductService:ProductService,private _Router:Router) { }
-
+  tbl;
   productsList:Iproduct[];
   ngOnInit(): void {
+   
    this._ProductService.GetAllProducts().subscribe(
       res=>this.productsList=res,
       err=>{console.log(err) ;}
     )
+    
 
   }
 
   DeleteProduct(ProductID)
   {
     this._ProductService.DeleteProduct(ProductID).subscribe(
-      res=>{this._Router.navigate(['/Dashboard']) ;alert("deleted successfully !")},
+      res=>{
+        this._Router.navigate(['/Home']) ;
+        alert("deleted successfully !");
+        //alert(res.Id);
+      },
+
       err=>{console.log(err) ;}
     )
   }
-
+  
 }

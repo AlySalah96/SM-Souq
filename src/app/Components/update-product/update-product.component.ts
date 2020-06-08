@@ -4,6 +4,8 @@ import {Location} from '@angular/common'
 import{Iproduct} from 'src/app/Interfaces/iproduct';
 import{ProductService} from 'src/app/Services/Product.Service'
 import { ActivatedRoute, Router } from '@angular/router';
+import{CategoryService} from 'src/app/Services/category.service';
+import{Icategory} from 'src/app/Interfaces/icategory';
 
 @Component({
   selector: 'app-update-product',
@@ -14,8 +16,11 @@ export class UpdateProductComponent implements OnInit {
   ProductID: number;
   Product: Iproduct;
   productImage:File;
+  categoriesList:Icategory[];
+
   constructor(private _ProductService :ProductService,private _ActivatedRoute:ActivatedRoute 
-    ,  private _Location:Location ,private _Router:Router) { }
+    ,  private _Location:Location ,private _Router:Router
+    ,private _CategoryService:CategoryService) { }
 
 
   ngOnInit(): void {
@@ -31,6 +36,11 @@ export class UpdateProductComponent implements OnInit {
       
          
      )
+
+     this._CategoryService.GetAllCategories().subscribe(
+      res=>{this.categoriesList=res;},
+      err=>{console.log(err) ;}
+    )
 
   }
   readURL(event): void 
